@@ -4,14 +4,15 @@
 
 package com.mycompany.quickchat;
 
+import java.util.Scanner;
 
 /**
- *Main console application for QuickChat - Part 1 
+ *Main console application for QuickChatApp - Part 1 
  * This is the entry point of the program
  * 
  * @author Lorenza 
  */
-public class QuickChat {
+public class QuickChatApp {
     
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
@@ -22,13 +23,13 @@ public class QuickChat {
     
     System.out.println("=== CREATE YOUR ACCOUNT ===\n");
     
-    System.out.println("Enter username (e.g., ky1_1: ");
+    System.out.print("Enter username (e.g., ky1_1: ");
     String username = scanner.nextLine().trim();
     
     System.out.print("Enter password: ");
     String password = scanner.nextLine().trim();
     
-    System.out.print("Enter cell number (e.g., +27 350264895: ");
+    System.out.print("Enter cell number (e.g., +27350264895: ");
     String cell = scanner.nextLine().trim();
     
     System.out.println("\n=== VALIDATION RESULTS ===");
@@ -39,7 +40,7 @@ public class QuickChat {
     
     System.out.println(login.checkPasswordComplexity(password)
             ? "✅ Password successfully captured."
-            : "❌ Password not correctly formatted; please ensure that the password contains at least 8 characters, a capital letter, a number, and a special character.");
+            : "❌ Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.");
     
     System.out.println(login.checkCellPhoneNumber(cell)
             ? "✅ Cell number successfully captured."
@@ -51,7 +52,7 @@ public class QuickChat {
     //Login section only if registration succeeded
     if (registerMessage.contains("successfully registered")){
         System.out.println("\n=== LOGIN TO YOUR ACCOUNT ===");
-        System.out.println("Enter username: ");
+        System.out.print("Enter username: ");
         String loginUser = scanner.nextLine().trim();
         
         System.out.print("Enter password: ");
@@ -62,26 +63,17 @@ public class QuickChat {
     }
     
     scanner.close();
-    System.out.println("\nThank you for using QuickChat! 💖");
+    System.out.println("\nThank you for using QuickChat! 😊");
     }
     
  
     private static void printBanner(String title){
+    
         System.out.println("╔════════════════════════════════════════════════════════════╗");
-        System.out.println("║                  " + title + "                 ║");
-        System.out.println("╚════════════════════════════════════════════════════════════╝");
+        System.out.println("║                  " + title + "            ║");
+        System.out.println("╚════════════════════════════════════════════════════════════╝\n");
         }  
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
