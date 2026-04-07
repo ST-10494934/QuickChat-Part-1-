@@ -23,7 +23,7 @@ public class QuickChatApp {
     
     System.out.println("=== CREATE YOUR ACCOUNT ===\n");
     
-    System.out.print("Enter username (e.g., ky1_1: ");
+    System.out.print("Enter username (e.g., kyl_1: ");
     String username = scanner.nextLine().trim();
     
     System.out.print("Enter password: ");
