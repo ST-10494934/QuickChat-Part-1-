@@ -52,13 +52,13 @@ public class LoginTest {
     
     @Test 
     public void testLoginSuccessful() {
-        login.registerUser("kyl_1", "Ch&&sec@ke99!", "+27838968976");
+        login.registerUser("kyl_1", "Ch&&sec@ke99!", "+27838968976", "Kyle", "Smith");
         assertTrue(login.loginUser("kyl_1", "Ch&&sec@ke99!"));
     }
     
     @Test
     public void testLoginFailed() {
-        login.registerUser("kyl_1", "Ch&&sec@ke99!", "+27838968976");
+        login.registerUser("kyl_1", "Ch&&sec@ke99!", "+27838968976", "Kyle", "Smith");
         assertFalse(login.loginUser("wronguser", "wrongpass"));
     }
     
