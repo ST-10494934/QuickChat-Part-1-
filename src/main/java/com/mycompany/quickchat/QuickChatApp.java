@@ -56,7 +56,7 @@ public class QuickChatApp {
     System.out.println("\n" + registerMessage);
     
     //Login section only if registration succeeded
-    if (registerMessage.contains("successfully registered")){
+    if (registerMessage.contains("successfully captured")) {
         System.out.println("\n=== LOGIN TO YOUR ACCOUNT ===");
         System.out.print("Enter username: ");
         String loginUser = scanner.nextLine().trim();
