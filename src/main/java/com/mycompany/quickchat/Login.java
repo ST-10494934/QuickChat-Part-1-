@@ -15,6 +15,8 @@ public class Login {
     private String storedUsername;
     private String storedPassword;
     private String storedCellNumber;
+    private String storedFirstName;
+    private String storedLastName;
     
     /**
     *Checks if the username contains an underscore (_) and is no more than 5 characters
@@ -66,46 +68,52 @@ public class Login {
      }
      
      /**
-      * Registers the user only if all validations pass.
-      * 
-      * @param username Username to register 
-      * @param password Password to register 
-      * @param cellNumber South African cell number
-      * @return Success or error message 
-      */
-     public String registerUser(String username, String password, String cellNumber) {
-         if (!checkUserName(username)) {
-             return "Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.";
-             
-         }
-         if (!checkPasswordComplexity(password)) {
-             return "Password is not correctly formatted; please ensure that thepassword contains at least eight characters, a capital letter, a number, and a special character.";
-         }
+     * Registers the user only if all validations pass.
+     * Stores username, password, cell number, first name and last name.
+     *
+     * @param username Username to register
+     * @param password Password to register
+     * @param cellNumber South African cell number
+     * @param firstName User's first name
+     * @param lastName User's last name
+     * @return Success or error message
+     */
+     
+     public String registerUser(String username, String password, String cellNumber, String firstName, String lastName) {
+        
+        if (!checkUserName(username)) {
+            return "Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.";
+        }
+        if (!checkPasswordComplexity(password)) {
+            return "Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.";
+        }
         if (!checkCellPhoneNumber(cellNumber)) {
             return "Cell number is incorrectly formatted or does not contain an international code; please correct the number and try again.";
         }
-        
-        //All checks passed - store the user
+
+        // Store all user details
         this.storedUsername = username;
         this.storedPassword = password;
         this.storedCellNumber = cellNumber;
-        
+        this.storedFirstName = firstName;
+        this.storedLastName = lastName;
+
         return "Username and password successfully captured. The user has been registered successfully!";
-     }
+    }
      
      /**
-      * Verifies if the entered username and password match the registered ones.
+      * Verifies login credentials
       * 
       * @param username Entered username 
       * @param password Entered password
       * @return true if login is successful, false otherwise 
       */
      public boolean loginUser(String username, String password) {
-         if (storedUsername == null || storedPassword == null) {
-             return false; 
-         }
-         return storedUsername.equals(username) && storedPassword.equals(password);
-     }
+        if (storedUsername == null || storedPassword == null) {
+            return false;
+        }
+        return storedUsername.equals(username) && storedPassword.equals(password);
+    }
      
      /**
       * Returns the login status message
@@ -114,10 +122,10 @@ public class Login {
       * @return Welcome message or error message 
       */
      public String returnLoginStatus(boolean loggedIn) {
-         if (loggedIn && storedUsername != null) {
-             return "Welcome " + storedUsername + ", it is great to see you again.";
-         }else {
-             return "Username or password incorrect, please try again";
-         }
+        if (loggedIn && storedFirstName != null && storedLastName != null) {
+            return "Welcome " + storedFirstName + " " + storedLastName + ", it is great to see you again.";
+        } else {
+            return "Username or password incorrect, please try again.";
+        }
      }
 }
