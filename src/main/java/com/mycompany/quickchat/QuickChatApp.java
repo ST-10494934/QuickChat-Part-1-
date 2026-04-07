@@ -23,13 +23,19 @@ public class QuickChatApp {
     
     System.out.println("=== CREATE YOUR ACCOUNT ===\n");
     
-    System.out.print("Enter username (e.g., kyl_1: ");
+    System.out.print("Enter first name: ");
+    String firstName = scanner.nextLine().trim();
+    
+    System.out.print("Enter last name: ");
+    String lastName = scanner.nextLine().trim();
+    
+    System.out.print("Enter username (e.g., kyl_1): ");
     String username = scanner.nextLine().trim();
     
     System.out.print("Enter password: ");
     String password = scanner.nextLine().trim();
     
-    System.out.print("Enter cell number (e.g., +27350264895: ");
+    System.out.print("Enter cell number (e.g., +27350264895): ");
     String cell = scanner.nextLine().trim();
     
     System.out.println("\n=== VALIDATION RESULTS ===");
@@ -46,7 +52,7 @@ public class QuickChatApp {
             ? "✅ Cell number successfully captured."
             : "❌ Cell number is incorrectly formatted or does not contain an international code; please correct the number and try again.");
     
-    String registerMessage = login.registerUser(username, password, cell);
+    String registerMessage = login.registerUser(username, password, cell, firstName, lastName);
     System.out.println("\n" + registerMessage);
     
     //Login section only if registration succeeded
@@ -54,7 +60,6 @@ public class QuickChatApp {
         System.out.println("\n=== LOGIN TO YOUR ACCOUNT ===");
         System.out.print("Enter username: ");
         String loginUser = scanner.nextLine().trim();
-        
         System.out.print("Enter password: ");
         String loginPass = scanner.nextLine().trim();
         
