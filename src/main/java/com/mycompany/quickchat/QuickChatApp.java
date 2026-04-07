@@ -19,7 +19,7 @@ public class QuickChatApp {
         Login login = new Login();
         
          //Banner
-    printBanner("QUICKCHAT - REGISTRATION & LOGIN");
+    printBanner(" === QUICKCHAT - REGISTRATION & LOGIN === ");
     
     System.out.println("=== CREATE YOUR ACCOUNT ===\n");
     
@@ -68,7 +68,7 @@ public class QuickChatApp {
     }
     
     scanner.close();
-    System.out.println("\nThank you for using QuickChat! 😊");
+    System.out.println("\nThank you for using QuickChat!");
     }
     
  
