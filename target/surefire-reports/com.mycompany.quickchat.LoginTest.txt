@@ -1,4 +1,77 @@
 -------------------------------------------------------------------------------
 Test set: com.mycompany.quickchat.LoginTest
 -------------------------------------------------------------------------------
-Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.105 s -- in com.mycompany.quickchat.LoginTest
+Tests run: 15, Failures: 4, Errors: 0, Skipped: 0, Time elapsed: 0.155 s <<< FAILURE! -- in com.mycompany.quickchat.LoginTest
+com.mycompany.quickchat.LoginTest.testPasswordCorrectMessage -- Time elapsed: 0.041 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+expected: <Username successfully captured.
+Password successfully captured.
+Cell number successfully captured.
+The user has been registered successfully!> but was: <Username successfully captured.
+Password successfully captured.
+Cell phone number successfully captured.
+The user has been registered successfully!>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.mycompany.quickchat.LoginTest.testPasswordCorrectMessage(LoginTest.java:72)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+
+com.mycompany.quickchat.LoginTest.testCellPhoneIncorrectMessage -- Time elapsed: 0.005 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+	at com.mycompany.quickchat.LoginTest.testCellPhoneIncorrectMessage(LoginTest.java:125)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+
+com.mycompany.quickchat.LoginTest.testCellPhoneCorrectMessage -- Time elapsed: 0.004 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+expected: <Username successfully captured.
+Password successfully captured.
+Cell number successfully captured.
+The user has been registered successfully!> but was: <Username successfully captured.
+Password successfully captured.
+Cell phone number successfully captured.
+The user has been registered successfully!>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.mycompany.quickchat.LoginTest.testCellPhoneCorrectMessage(LoginTest.java:113)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+
+com.mycompany.quickchat.LoginTest.testUsernameCorrectMessage -- Time elapsed: 0.007 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+expected: <Username successfully captured.
+Password successfully captured.
+Cell number successfully captured.
+The user has been registered successfully!> but was: <Username successfully captured.
+Password successfully captured.
+Cell phone number successfully captured.
+The user has been registered successfully!>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.mycompany.quickchat.LoginTest.testUsernameCorrectMessage(LoginTest.java:46)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+
