@@ -81,15 +81,30 @@ public class Login {
      
      public String registerUser(String username, String password, String cellNumber, String firstName, String lastName) {
         
-        if (!checkUserName(username)) {
-            return "Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.";
+        String message = ""; 
+        //Username Validation 
+         if (checkUserName(username)) {
+             message += "Username successfully captured.\n";
+         } else {
+            message += "Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.\n";
         }
-        if (!checkPasswordComplexity(password)) {
-            return "Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.";
+         //Password validation 
+        if (checkPasswordComplexity(password)) {
+            message += "Password successfully captured.\n";
+        } else {
+            message +=  "Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.\n";
         }
-        if (!checkCellPhoneNumber(cellNumber)) {
-            return "Cell number is incorrectly formatted or does not contain an international code; please correct the number and try again.";
+        //Cell number validation 
+        if (checkCellPhoneNumber(cellNumber)) {
+            message += "Cell phone number successfully captured.\n";
+        } else {
+            message += "Cell phone number is incorrectly formatted or does not contain an international code; please correct the number and try again.\n";
         }
+        
+        //Final registration check 
+        if (checkUserName(username)
+                && checkPasswordComplexity(password)
+                && checkCellPhoneNumber(cellNumber)){
 
         // Store all user details
         this.storedUsername = username;
@@ -98,9 +113,10 @@ public class Login {
         this.storedFirstName = firstName;
         this.storedLastName = lastName;
 
-        return "Username and password successfully captured. The user has been registered successfully!";
+        message += "The user has been registered successfully!";
     }
-     
+     return message;
+     }
      /**
       * Verifies login credentials
       * 
@@ -122,7 +138,7 @@ public class Login {
       * @return Welcome message or error message 
       */
      public String returnLoginStatus(boolean loggedIn) {
-        if (loggedIn && storedFirstName != null && storedLastName != null) {
+        if (loggedIn) {
             return "Welcome " + storedFirstName + " " + storedLastName + ", it is great to see you again.";
         } else {
             return "Username or password incorrect, please try again.";
