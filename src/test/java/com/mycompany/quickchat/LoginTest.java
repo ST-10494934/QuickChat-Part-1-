@@ -18,6 +18,7 @@ public class LoginTest {
     
     // === Validation Method Test ===
     
+    //Username test 
     @Test 
     public void testUsernameCorrectlyFormatted(){
         assertTrue(login.checkUserName("kyl_1"));
@@ -29,6 +30,23 @@ public class LoginTest {
     }
     
     @Test 
+    public void testUsernameCorrectMessage(){
+        String expected = "Username successfully captured.\n"
+                + "Password successfully captured.\n"
+                + "Cell number successfully captured.\n"
+                + "The user has been registered successfully!";
+        
+        String actual = login.registerUser(
+                "kyl_1",
+                "Ch&&sec@ke99!",
+                "+27838968976",
+                "Kyle",
+                "Smith"
+        );
+        assertEquals(expected,actual);        
+    }
+    // Password test 
+    @Test 
     public void testPasswordMeetsComplexity(){
         assertTrue(login.checkPasswordComplexity("Ch&&sec@ke99!"));
     }
@@ -39,6 +57,36 @@ public class LoginTest {
     }
     
     @Test 
+    public void testPasswordCorrectMessage(){
+        String expected = "Username successfully captured.\n"
+                + "Password successfully captured.\n"
+                + "Cell number successfully captured.\n"
+                + "The user has been registered successfully!";
+        String actual = login.registerUser(
+                "kyl_1",
+                "Ch&&sec@ke99!",
+                "+27838968976",
+                "Kyle",
+                "Smith"
+        );
+        assertEquals(expected,actual); 
+    }
+    
+    @Test 
+    public void testPasswordIncorrectMessage(){
+        String actual = login.registerUser(
+                "kyl_1",
+                "password",
+                "+27838968976",
+                "Kyle",
+                "Smith"
+        );
+        assertTrue(actual.contains(
+                "Password is not correctly formatted"
+        ));
+    }
+    //Cell phone test  
+    @Test 
     public void testCellPhoneCorrectlyFormatted(){
         assertTrue(login.checkCellPhoneNumber("+27838968976"));
     }
@@ -48,6 +96,36 @@ public class LoginTest {
         assertFalse(login.checkCellPhoneNumber("08966553"));
     }
     
+    @Test 
+    public void testCellPhoneCorrectMessage(){
+        String expected = "Username successfully captured.\n"
+                + "Password successfully captured.\n"
+                + "Cell number successfully captured.\n"
+                + "The user has been registered successfully!";
+        
+        String actual = login.registerUser(
+                "kyl_1",
+                "Ch&&sec@ke99!",
+                "+27838968976",
+                "Kyle",
+                "Smith"
+        ); 
+        assertEquals(expected, actual);
+    }
+    
+    @Test 
+    public void testCellPhoneIncorrectMessage(){
+        String actual = login.registerUser(
+                "kyl_1",
+                "Ch&&sec@ke99!",
+                "08966553",
+                "Kyle",
+                "Smith"
+        ); 
+        assertTrue(actual.contains(
+                "Cell number is incorrectly formatted"
+        ));
+    }
     // === Login Tests ===
     
     @Test 
@@ -62,35 +140,18 @@ public class LoginTest {
         assertFalse(login.loginUser("wronguser", "wrongpass"));
     }
     
-    // === Boolean Check Test === 
+    @Test
+    public void testReturnLoginStatusSuccess(){
+        login.registerUser("kyl_1", "Ch&&sec@ke99!", "+27838968976", "Kyle", "Smith");
+        
+        boolean loggedIn = login.loginUser("kyl_1", "Ch&&sec@ke99!");
+        String expected = "Welcome Kyle Smith, it is great to see you again."; 
+        assertEquals(expected, login.returnLoginStatus(loggedIn));
+    }
     
     @Test 
-    public void testUsernameCorrectlyFormattedBoolean(){
-        assertTrue(login.checkUserName("kyl_1"));
-    }
-    
-    @Test
-    public void testUsernameIncorrectlyFormattedBoolean(){
-        assertFalse(login.checkUserName("kyle!!!!!!!"));
-    }
-    
-    @Test
-    public void testPasswordMeetsComplexityBoolean(){
-        assertTrue(login.checkPasswordComplexity("Ch&&sec@ke99!"));
-    }
-
-    @Test 
-    public void testPasswordDoesNotMeetComplexityBoolean(){
-        assertFalse(login.checkPasswordComplexity("password"));
-    }
-    
-    @Test
-    public void testCellPhoneCorrectlyFormattedBoolean(){
-        assertTrue(login.checkCellPhoneNumber("+27838968976"));
-    }
-    
-    @Test
-    public void testCellPhoneIncorrectlyFormattedBoolean() {
-        assertFalse(login.checkCellPhoneNumber("08966553"));
+    public void testReturnLoginStatusFailure(){
+        String expected = "Username or password incorrect, please try again.";
+        assertEquals(expected, login.returnLoginStatus(false));
     }
 }
