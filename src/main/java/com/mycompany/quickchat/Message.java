@@ -3,9 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.quickchat;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -135,20 +142,62 @@ public class Message {
  */
 public int returnTotalMessages(int sentCount){
     return sentCount;
-}    
+}
+/**
+ * Stores the message in a JSON file using Gson 
+ * Reference: Gson library by Google - https://github.com/google/gson
+ */
+public void storeMessage(){
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    List<MessageData> messages = new ArrayList<>();
     
+    // Read any existing messages from the file first 
+    try (FileReader reader = new FileReader(JSON_FILE)){
+        Type listType = new TypeToken<List<MessageData>>(){}.getType();
+        List<MessageData> existing = gson.fromJson(reader, listType);
+        if (existing !=null){
+            messages.addAll(existing);
+        }
+    } catch (IOException e){
+         
+    }
     
+    //Add this message to the list 
+    messages.add(new MessageData(messageID, messageNumber,
+             recipient, messageText, messageHash));
+    
+    //Write the updated list back to the file
+    try (FileWriter writer = new FileWriter(JSON_FILE)){
+        gson.toJson(messages, writer);
+    } catch (IOException e){
+        System.out.println("Error storing message: " + e.getMessage());
+    }
+}
 
+//Getters 
+public String getMessageID() {return messageID;}
+public int getMessageNumber() {return messageNumber;}
+public String getRecipient() {return recipient;}
+public String getMessageText() {return messageText;}
+public String getMessageHash() {return messageHash;}
 
-
-
-
-
-
-
-
-
-
-
-
+/**
+ * Inner class used to structure data for JSON storage
+ */
+public static class MessageData {
+    String messageID;
+    int messageNumber;
+    String recipient;
+    String messageText;
+    String messageHash;
+    
+    public MessageData(String messageID, int messageNumber, String recipient,
+            String messageText, String messageHash) {
+        this.messageID = messageID;
+        this.messageNumber = messageNumber;
+        this.recipient = recipient;
+        this.messageText = messageText;
+        this.messageHash = messageHash;
+    }
+}
 }
