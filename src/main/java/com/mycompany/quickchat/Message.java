@@ -73,7 +73,7 @@ public class Message {
      * @return success of failure message 
      */
     public String checkRecipientCell(String cell){
-        if (cell != null && cell.matches("^\\27\\d{9}$")){
+        if (cell != null && cell.matches("^\\+27\\d{9}$")){
             return "Cell phone number successfully captured.";
         }
         return "Cell phone number is incorrectly formatted or does not contain"
@@ -107,7 +107,7 @@ public class Message {
         System.out.println("1) Send Message");
         System.out.println("2) Disregard Message");
         System.out.println("3) Store Message");
-        System.out.println("Choose an option");
+        System.out.println("Choose an option ");
         
         String choice = scanner.nextLine().trim();
         
@@ -128,7 +128,7 @@ public class Message {
      * 
      * @return formatted message details 
      */
-    public String printMessage(){
+    public String printMessages(){
         return "Message ID: " + messageID + "\n"
                 + "Message Hash: " + messageHash + "\n"
                 + "Recipient: " + recipient + "\n"
