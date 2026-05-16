@@ -45,10 +45,10 @@ public class MessageTest {
     
     @Test 
     public void testRecipientCellIncorrect(){
-        Message message = new message(2, "+27718693002",
+        Message message = new Message(2, "+27718693002",
                 "Hi Keegan, did you receive the payment?");
         assertEquals("Cell phone number is incorrectly formatted or does not contain "
-                + " an international code. Please correct the number and try again.",
+                + "an international code. Please correct the number and try again.",
                 message.checkRecipientCell("08575975889"));
     }
     
