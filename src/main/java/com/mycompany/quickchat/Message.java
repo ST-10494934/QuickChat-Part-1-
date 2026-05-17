@@ -76,7 +76,7 @@ public class Message {
         if (cell != null && cell.matches("^\\+27\\d{9}$")){
             return "Cell phone number successfully captured.";
         }
-        return "Cell phone number is incorrectly formatted or does not contain"
+        return "Cell phone number is incorrectly formatted or does not contain "
                 + "an international code. Please correct the number and try again.";
     }
     

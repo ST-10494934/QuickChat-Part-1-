@@ -33,7 +33,7 @@ public class LoginTest {
     public void testUsernameCorrectMessage(){
         String expected = "Username successfully captured.\n"
                 + "Password successfully captured.\n"
-                + "Cell number successfully captured.\n"
+                + "Cell phone number successfully captured.\n"
                 + "The user has been registered successfully!";
         
         String actual = login.registerUser(
@@ -60,7 +60,7 @@ public class LoginTest {
     public void testPasswordCorrectMessage(){
         String expected = "Username successfully captured.\n"
                 + "Password successfully captured.\n"
-                + "Cell number successfully captured.\n"
+                + "Cell phone number successfully captured.\n"
                 + "The user has been registered successfully!";
         String actual = login.registerUser(
                 "kyl_1",
@@ -100,7 +100,7 @@ public class LoginTest {
     public void testCellPhoneCorrectMessage(){
         String expected = "Username successfully captured.\n"
                 + "Password successfully captured.\n"
-                + "Cell number successfully captured.\n"
+                + "Cell phone number successfully captured.\n"
                 + "The user has been registered successfully!";
         
         String actual = login.registerUser(
@@ -123,7 +123,7 @@ public class LoginTest {
                 "Smith"
         ); 
         assertTrue(actual.contains(
-                "Cell number is incorrectly formatted"
+                "Cell phone number is incorrectly formatted"
         ));
     }
     // === Login Tests ===

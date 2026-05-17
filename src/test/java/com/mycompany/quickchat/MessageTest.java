@@ -30,7 +30,7 @@ public class MessageTest {
         String result = longMsg.length() <= 250 ? "Message ready to send."
                 : "Message exceeds 250 characters by "
                 + over + "; please reduce the size.";
-        assertEquals("Message exceeds 250 characters by" + over + "please reduce the size.", result);
+        assertEquals("Message exceeds 250 characters by " + over + "; please reduce the size.", result);
     }
     
     //Recipient cell tests 
